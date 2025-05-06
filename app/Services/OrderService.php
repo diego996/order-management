@@ -9,6 +9,7 @@ use App\Events\OrderUpdated;
 use App\Events\OrderDeleted;
 use App\Models\Order;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 
 class OrderService
 {
@@ -35,7 +36,14 @@ class OrderService
 
     public function create(array $data): Order
     {
+        if (auth()->check()) {
+            $data['user_id'] = auth()->id();
+        } else {
+            $data['user_id'] = 1; // o un valore predefinito
+        }
+
         $order = $this->repo->create($data);
+
         event(new OrderCreated($order));
         return $order;
     }

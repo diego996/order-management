@@ -45,10 +45,12 @@ class OrderList extends Component
             $this->sortDirection = 'asc';
         }
     }
+    #[On('orderCreated')]
     public function handleOrderCreated()
     {
         // Dopo aver creato un ordine, torniamo a pagina 1
         $this->resetPage();
+        $this->showCreateModal = false;
     }
 
     // Per ogni filtro, quando cambia, resetta la paginazione
