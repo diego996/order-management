@@ -14,12 +14,6 @@ Route::get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
     //stampami tutte le rotte racchiuse in apiResource
-    // Route::apiResource('orders', OrderController::class);
-    // Route::get('/orders', [OrderController::class,'index']);
-    // Route::get('/orders/{order}', [OrderController::class,'show']);
-    // Route::post('/orders', [OrderController::class,'store']);
-    // Route::put('/orders/{order}', [OrderController::class,'update']);
-    // Route::delete('/orders/{order}', [OrderController::class,'destroy']);
     Route::apiResource('orders',     OrderController::class);
 });
 

@@ -47,7 +47,7 @@ class OrderSeeder extends Seeder
                     // Pivot con quantità, prezzo unitario e timestamps
                     $order->products()->attach($productId, [
                         'quantity'   => $quantity,
-                        'price'      => $price,
+                        'price'      => $price * $quantity,
                         'created_at' => now(),
                         'updated_at' => now(),
                     ]);

@@ -196,16 +196,16 @@
                     @foreach($order->products as $p)
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 text-sm text-gray-800">
-                                {{ $p->name }}
+                                {{ $p->name }} 
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-800">
                                 {{ $p->pivot->quantity }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-800">
-                                € {{ number_format($p->pivot->price,2,',','.') }}
+                                € {{ number_format($p->price,2,',','.') }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-800 font-semibold">
-                                € {{ number_format($p->pivot->quantity * $p->pivot->price,2,',','.') }}
+                                € {{ number_format($p->price * $p->pivot->quantity ,2,',','.') }}
                             </td>
                         </tr>
                     @endforeach
