@@ -82,25 +82,25 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
+                    <ul id="tocify-header-orders" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="orders">
+                    <a href="#orders">Orders</a>
                 </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-orders">
-                                <a href="#endpoints-GETapi-orders">Lista gli ordini con filtri.</a>
+                                    <ul id="tocify-subheader-orders" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="orders-GETapi-orders">
+                                <a href="#orders-GETapi-orders">Lista gli ordini con filtri.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-orders">
-                                <a href="#endpoints-POSTapi-orders">Crea un nuovo ordine.</a>
+                                                                                <li class="tocify-item level-2" data-unique="orders-POSTapi-orders">
+                                <a href="#orders-POSTapi-orders">Crea un nuovo ordine.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-orders--id-">
-                                <a href="#endpoints-GETapi-orders--id-">Mostra i dettagli di un singolo ordine.</a>
+                                                                                <li class="tocify-item level-2" data-unique="orders-GETapi-orders--id-">
+                                <a href="#orders-GETapi-orders--id-">Mostra i dettagli di un singolo ordine.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-orders--id-">
-                                <a href="#endpoints-PUTapi-orders--id-">Aggiorna un ordine esistente.</a>
+                                                                                <li class="tocify-item level-2" data-unique="orders-PUTapi-orders--id-">
+                                <a href="#orders-PUTapi-orders--id-">Aggiorna un ordine esistente.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-orders--id-">
-                                <a href="#endpoints-DELETEapi-orders--id-">Elimina un ordine.</a>
+                                                                                <li class="tocify-item level-2" data-unique="orders-DELETEapi-orders--id-">
+                                <a href="#orders-DELETEapi-orders--id-">Elimina un ordine.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -141,7 +141,6 @@ You can switch the language used with the tabs at the top right (or from the nav
                                 <h2 id="authentication-POSTapi-login">Effettua il login e restituisce un token.</h2>
 
 <p>
-<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -153,14 +152,9 @@ You can switch the language used with the tabs at the top right (or from the nav
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost/api/login" \
-    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Authorization: string required Credenziali in formato Basic Auth.  Example: Basic YWRtaW5AZXhhbXBsZS5jb206cGFzc3dvcmQ=  per testare con Postman admin@example.com:password" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"email\": \"admin@example.com\",
-    \"password\": \"password\"
-}"
-</code></pre></div>
+    --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
@@ -169,20 +163,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 );
 
 const headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Authorization": "string required Credenziali in formato Basic Auth.  Example: Basic YWRtaW5AZXhhbXBsZS5jb206cGFzc3dvcmQ=  per testare con Postman admin@example.com:password",
     "Content-Type": "application/json",
     "Accept": "application/json",
-};
-
-let body = {
-    "email": "admin@example.com",
-    "password": "password"
 };
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -242,7 +230,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-login" data-method="POST"
       data-path="api/login"
-      data-authed="1"
+      data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -277,11 +265,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Authorization" class="auth-value"               data-endpoint="POSTapi-login"
-               value="Bearer {YOUR_AUTH_KEY}"
+                              name="Authorization"                data-endpoint="POSTapi-login"
+               value="string required Credenziali in formato Basic Auth.  Example: Basic YWRtaW5AZXhhbXBsZS5jb206cGFzc3dvcmQ=  per testare con Postman admin@example.com:password"
                data-component="header">
     <br>
-<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
+<p>Example: <code>string required Credenziali in formato Basic Auth.  Example: Basic YWRtaW5AZXhhbXBsZS5jb206cGFzc3dvcmQ=  per testare con Postman admin@example.com:password</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -305,30 +293,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-login"
-               value="admin@example.com"
-               data-component="body">
-    <br>
-<p>Indirizzo email dell'utente. Example: <code>admin@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="password"                data-endpoint="POSTapi-login"
-               value="password"
-               data-component="body">
-    <br>
-<p>Password dell'utente. Example: <code>password</code></p>
-        </div>
-        </form>
+                        </form>
 
                     <h2 id="authentication-GETapi-user">Restituisce i dati dell’utente autenticato.</h2>
 
@@ -591,11 +556,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                <h1 id="endpoints">Endpoints</h1>
+                <h1 id="orders">Orders</h1>
 
     
 
-                                <h2 id="endpoints-GETapi-orders">Lista gli ordini con filtri.</h2>
+                                <h2 id="orders-GETapi-orders">Lista gli ordini con filtri.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -793,7 +758,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                 </form>
 
-                    <h2 id="endpoints-POSTapi-orders">Crea un nuovo ordine.</h2>
+                    <h2 id="orders-POSTapi-orders">Crea un nuovo ordine.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -814,7 +779,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"user_id\": \"consequatur\",
     \"customer_id\": 1,
-    \"order_date\": \"2025-05-07T15:35:03\",
+    \"order_date\": \"2025-05-07T15:48:05\",
     \"order_code\": \"consequatur\",
     \"status\": \"pending\",
     \"products\": [
@@ -841,7 +806,7 @@ const headers = {
 let body = {
     "user_id": "consequatur",
     "customer_id": 1,
-    "order_date": "2025-05-07T15:35:03",
+    "order_date": "2025-05-07T15:48:05",
     "order_code": "consequatur",
     "status": "pending",
     "products": [
@@ -867,7 +832,14 @@ fetch(url, {
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-     restituzione ordine creato
+    &quot;user_id&quot;: 1,
+    &quot;customer_id&quot;: 3,
+    &quot;order_date&quot;: &quot;2025-05-07T00:00:00.000000Z&quot;,
+    &quot;order_code&quot;: &quot;ORD-10012q&quot;,
+    &quot;status&quot;: &quot;pending&quot;,
+    &quot;updated_at&quot;: &quot;2025-05-07T15:43:57.000000Z&quot;,
+    &quot;created_at&quot;: &quot;2025-05-07T15:43:57.000000Z&quot;,
+    &quot;id&quot;: 35
 }</code>
  </pre>
             <blockquote>
@@ -990,10 +962,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="order_date"                data-endpoint="POSTapi-orders"
-               value="2025-05-07T15:35:03"
+               value="2025-05-07T15:48:05"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-07T15:35:03</code></p>
+<p>Must be a valid date. Example: <code>2025-05-07T15:48:05</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>order_code</code></b>&nbsp;&nbsp;
@@ -1052,7 +1024,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-orders--id-">Mostra i dettagli di un singolo ordine.</h2>
+                    <h2 id="orders-GETapi-orders--id-">Mostra i dettagli di un singolo ordine.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1219,7 +1191,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="endpoints-PUTapi-orders--id-">Aggiorna un ordine esistente.</h2>
+                    <h2 id="orders-PUTapi-orders--id-">Aggiorna un ordine esistente.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1240,7 +1212,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"user_id\": \"consequatur\",
     \"customer_id\": 17,
-    \"order_date\": \"2025-05-07T15:35:03\",
+    \"order_date\": \"2025-05-07T15:48:05\",
     \"order_code\": \"consequatur\",
     \"status\": \"consequatur\",
     \"total\": 45,
@@ -1265,7 +1237,7 @@ const headers = {
 let body = {
     "user_id": "consequatur",
     "customer_id": 17,
-    "order_date": "2025-05-07T15:35:03",
+    "order_date": "2025-05-07T15:48:05",
     "order_code": "consequatur",
     "status": "consequatur",
     "total": 45,
@@ -1288,7 +1260,7 @@ fetch(url, {
         </blockquote>
                 <pre>
 
-<code class="language-json" style="max-height: 300px;">{  restituzione ordine aggiornato  }</code>
+<code class="language-json" style="max-height: 300px;">{}</code>
  </pre>
             <blockquote>
             <p>Example response (404):</p>
@@ -1443,10 +1415,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="order_date"                data-endpoint="PUTapi-orders--id-"
-               value="2025-05-07T15:35:03"
+               value="2025-05-07T15:48:05"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-07T15:35:03</code></p>
+<p>Must be a valid date. Example: <code>2025-05-07T15:48:05</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>order_code</code></b>&nbsp;&nbsp;
@@ -1527,7 +1499,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-DELETEapi-orders--id-">Elimina un ordine.</h2>
+                    <h2 id="orders-DELETEapi-orders--id-">Elimina un ordine.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>

@@ -14,9 +14,10 @@ class AuthController extends Controller
     /**
      * Effettua il login e restituisce un token.
      *
-     * @group Authentication
-     * @bodyParam email string required Indirizzo email dell'utente. Example: user@example.com
-     * @bodyParam password string required Password dell'utente. Example: secret
+    * @group Authentication
+    * @unauthenticated
+    * @header Authorization string required Credenziali in formato Basic Auth.  Example: Basic YWRtaW5AZXhhbXBsZS5jb206cGFzc3dvcmQ=  per testare con Postman admin@example.com:password
+        * 
      *
      * @response 200 {
      *   "user": {

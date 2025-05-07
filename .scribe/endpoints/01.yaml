@@ -1,4 +1,4 @@
-name: Endpoints
+name: Orders
 description: ''
 endpoints:
   -
@@ -6,7 +6,7 @@ endpoints:
       - GET
     uri: api/orders
     metadata:
-      groupName: Endpoints
+      groupName: Orders
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -105,7 +105,7 @@ endpoints:
       - POST
     uri: api/orders
     metadata:
-      groupName: Endpoints
+      groupName: Orders
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -146,7 +146,7 @@ endpoints:
         name: order_date
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-07T15:00:48'
+        example: '2025-05-07T15:48:05'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -208,7 +208,7 @@ endpoints:
     cleanBodyParameters:
       user_id: consequatur
       customer_id: 1
-      order_date: '2025-05-07T15:00:48'
+      order_date: '2025-05-07T15:48:05'
       order_code: consequatur
       status: pending
       products:
@@ -221,7 +221,14 @@ endpoints:
         status: 201
         content: |-
           {
-               restituzione ordine creato
+          "user_id": 1,
+          "customer_id": 3,
+          "order_date": "2025-05-07T00:00:00.000000Z",
+          "order_code": "ORD-10012q",
+          "status": "pending",
+          "updated_at": "2025-05-07T15:43:57.000000Z",
+          "created_at": "2025-05-07T15:43:57.000000Z",
+          "id": 35
           }
         headers: []
         description: ''
@@ -250,7 +257,7 @@ endpoints:
       - GET
     uri: 'api/orders/{id}'
     metadata:
-      groupName: Endpoints
+      groupName: Orders
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -329,7 +336,7 @@ endpoints:
       - PATCH
     uri: 'api/orders/{id}'
     metadata:
-      groupName: Endpoints
+      groupName: Orders
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
@@ -392,7 +399,7 @@ endpoints:
         name: order_date
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-07T15:00:48'
+        example: '2025-05-07T15:48:05'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -472,7 +479,7 @@ endpoints:
     cleanBodyParameters:
       user_id: consequatur
       customer_id: 17
-      order_date: '2025-05-07T15:00:48'
+      order_date: '2025-05-07T15:48:05'
       order_code: consequatur
       status: consequatur
       total: 45
@@ -482,7 +489,9 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{  restituzione ordine aggiornato  }'
+        content: |-
+          {
+                  }
         headers: []
         description: ''
         custom: []
@@ -512,7 +521,7 @@ endpoints:
       - DELETE
     uri: 'api/orders/{id}'
     metadata:
-      groupName: Endpoints
+      groupName: Orders
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''

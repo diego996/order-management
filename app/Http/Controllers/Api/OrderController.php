@@ -15,6 +15,7 @@ class OrderController extends Controller
 
 
    /**
+    * @group Orders
      * Lista gli ordini con filtri.
      *
      * @queryParam customer_id integer Filtra per ID cliente. Example: 1
@@ -41,7 +42,7 @@ class OrderController extends Controller
     }
  /**
      * Mostra i dettagli di un singolo ordine.
-     *
+     *@group Orders
      * @urlParam order integer required ID dell’ordine. Example: 1
      * @response 200 {
      *   "id": 1,
@@ -70,13 +71,20 @@ class OrderController extends Controller
     }
 /**
      * Crea un nuovo ordine.
-     *
+     *@group Orders
      * @bodyParam customer_id integer required ID cliente. Example: 1
      * @bodyParam status string required Stato ordine. Example: pending
      * @bodyParam products array required Elenco prodotti con id e quantità. Example: [{"id":1,"quantity":2}]
      *
      * @response 201 {
-     *      restituzione ordine creato
+     * "user_id": 1,
+     * "customer_id": 3,
+     * "order_date": "2025-05-07T00:00:00.000000Z",
+     * "order_code": "ORD-10012q",
+     * "status": "pending",
+     * "updated_at": "2025-05-07T15:43:57.000000Z",
+     * "created_at": "2025-05-07T15:43:57.000000Z",
+     * "id": 35
      * }
      * @response 422 {
      *   "message": "The given data was invalid.",
@@ -93,13 +101,14 @@ class OrderController extends Controller
     }
      /**
      * Aggiorna un ordine esistente.
-     *
+     *@group Orders
      * @urlParam order integer required ID dell’ordine. Example: 1
      * @bodyParam customer_id integer ID cliente.
      * @bodyParam status string Stato.
      * @bodyParam products array Elenco prodotti.
      *
-     * @response 200 {  restituzione ordine aggiornato  }
+     * @response 200 {  
+     *         }
      * @response 404 { "message": "Order not found" }
      * @response 422 {  errore di validazione  }
      */
@@ -112,7 +121,7 @@ class OrderController extends Controller
     }
     /**
      * Elimina un ordine.
-     *
+     *@group Orders
      * @urlParam order integer required ID dell’ordine. Example: 1
      * @response 204 - No Content
      * @response 404 { "message": "Order not found" }

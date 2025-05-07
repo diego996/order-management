@@ -12,40 +12,18 @@ endpoints:
       subgroupDescription: ''
       title: 'Effettua il login e restituisce un token.'
       description: ''
-      authenticated: true
+      authenticated: false
       custom: []
     headers:
-      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Authorization: 'string required Credenziali in formato Basic Auth.  Example: Basic YWRtaW5AZXhhbXBsZS5jb206cGFzc3dvcmQ=  per testare con Postman admin@example.com:password'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: "Indirizzo email dell'utente."
-        required: true
-        example: user@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-      password:
-        name: password
-        description: "Password dell'utente."
-        required: true
-        example: secret
-        type: string
-        enumValues: []
-        exampleWasSpecified: true
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      email: user@example.com
-      password: secret
+    bodyParameters: []
+    cleanBodyParameters: []
     fileParameters: []
     responses:
       -
@@ -83,10 +61,7 @@ endpoints:
         description: ''
         custom: []
     responseFields: []
-    auth:
-      - headers
-      - Authorization
-      - 'Bearer 3V5EgbkvZcDPa166h8fd4ae'
+    auth: []
     controller: null
     method: null
     route: null

@@ -1,0 +1,490 @@
+openapi: 3.0.3
+info:
+  title: 'Laravel API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: Orders
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []
+paths:
+  /api/login:
+    post:
+      summary: 'Effettua il login e restituisce un token.'
+      operationId: effettuaIlLoginERestituisceUnToken
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  user:
+                    id: 1
+                    name: 'Mario Rossi'
+                    email: user@example.com
+                  token: plain-text-token
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Mario Rossi'
+                      email:
+                        type: string
+                        example: user@example.com
+                  token:
+                    type: string
+                    example: plain-text-token
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Credenziali non valide.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Credenziali non valide.'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    email:
+                      - 'Email e password sono obbligatorie.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'Email e password sono obbligatorie.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      security: []
+  /api/user:
+    get:
+      summary: 'Restituisce i dati dell’utente autenticato.'
+      operationId: restituisceIDatiDellutenteAutenticato
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  name: 'Mario Rossi'
+                  email: user@example.com
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: 'Mario Rossi'
+                  email:
+                    type: string
+                    example: user@example.com
+      tags:
+        - Authentication
+  /api/logout:
+    post:
+      summary: 'Revoca il token corrente.'
+      operationId: revocaIlTokenCorrente
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+      tags:
+        - Authentication
+  /api/orders:
+    get:
+      summary: 'Lista gli ordini con filtri.'
+      operationId: listaGliOrdiniConFiltri
+      description: ''
+      parameters:
+        -
+          in: query
+          name: customer_id
+          description: 'Filtra per ID cliente.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'Filtra per ID cliente.'
+            example: 1
+            nullable: false
+        -
+          in: query
+          name: status
+          description: 'Filtra per stato (pending, completed).'
+          example: pending
+          required: false
+          schema:
+            type: string
+            description: 'Filtra per stato (pending, completed).'
+            example: pending
+            nullable: false
+        -
+          in: query
+          name: date_from
+          description: 'date Filtra data inizio.'
+          example: '2023-10-01'
+          required: false
+          schema:
+            type: string
+            description: 'date Filtra data inizio.'
+            example: '2023-10-01'
+            nullable: false
+        -
+          in: query
+          name: date_to
+          description: 'date Filtra data fine.'
+          example: '2023-10-31'
+          required: false
+          schema:
+            type: string
+            description: 'date Filtra data fine.'
+            example: '2023-10-31'
+            nullable: false
+        -
+          in: query
+          name: per_page
+          description: 'Numero di risultati per pagina.'
+          example: 15
+          required: false
+          schema:
+            type: integer
+            description: 'Numero di risultati per pagina.'
+            example: 15
+            nullable: false
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n  \"data\": [array di ordini ],\n  \"meta\": {  paginazione  }\n}"
+      tags:
+        - Orders
+    post:
+      summary: 'Crea un nuovo ordine.'
+      operationId: creaUnNuovoOrdine
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  user_id: 1
+                  customer_id: 3
+                  order_date: '2025-05-07T00:00:00.000000Z'
+                  order_code: ORD-10012q
+                  status: pending
+                  updated_at: '2025-05-07T15:43:57.000000Z'
+                  created_at: '2025-05-07T15:43:57.000000Z'
+                  id: 35
+                properties:
+                  user_id:
+                    type: integer
+                    example: 1
+                  customer_id:
+                    type: integer
+                    example: 3
+                  order_date:
+                    type: string
+                    example: '2025-05-07T00:00:00.000000Z'
+                  order_code:
+                    type: string
+                    example: ORD-10012q
+                  status:
+                    type: string
+                    example: pending
+                  updated_at:
+                    type: string
+                    example: '2025-05-07T15:43:57.000000Z'
+                  created_at:
+                    type: string
+                    example: '2025-05-07T15:43:57.000000Z'
+                  id:
+                    type: integer
+                    example: 35
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors: {  }
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties: {  }
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: consequatur
+                  nullable: false
+                customer_id:
+                  type: integer
+                  description: 'ID cliente.'
+                  example: 1
+                  nullable: false
+                order_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2025-05-07T15:48:05'
+                  nullable: false
+                order_code:
+                  type: string
+                  description: ''
+                  example: consequatur
+                  nullable: false
+                status:
+                  type: string
+                  description: 'Stato ordine.'
+                  example: pending
+                  nullable: false
+                products:
+                  type: array
+                  description: 'Elenco prodotti con id e quantità.'
+                  example:
+                    -
+                      id: 1
+                      quantity: 2
+                  items:
+                    type: string
+              required:
+                - user_id
+                - customer_id
+                - order_date
+                - order_code
+                - status
+                - products
+  '/api/orders/{id}':
+    get:
+      summary: 'Mostra i dettagli di un singolo ordine.'
+      operationId: mostraIDettagliDiUnSingoloOrdine
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  customer_id: 1
+                  status: pending
+                  total: 100.0
+                  products: []
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  customer_id:
+                    type: integer
+                    example: 1
+                  status:
+                    type: string
+                    example: pending
+                  total:
+                    type: number
+                    example: 100.0
+                  products:
+                    type: array
+                    example: []
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Order not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Order not found'
+      tags:
+        - Orders
+    put:
+      summary: 'Aggiorna un ordine esistente.'
+      operationId: aggiornaUnOrdineEsistente
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Order not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Order not found'
+        422:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: '{  errore di validazione  }'
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the users table.'
+                  example: consequatur
+                  nullable: false
+                customer_id:
+                  type: integer
+                  description: 'ID cliente.'
+                  example: 17
+                  nullable: false
+                order_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2025-05-07T15:48:05'
+                  nullable: false
+                order_code:
+                  type: string
+                  description: ''
+                  example: consequatur
+                  nullable: false
+                status:
+                  type: string
+                  description: Stato.
+                  example: consequatur
+                  nullable: false
+                total:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 45
+                  nullable: false
+                products:
+                  type: array
+                  description: 'Elenco prodotti.'
+                  example:
+                    - consequatur
+                  items:
+                    type: string
+              required:
+                - user_id
+                - order_date
+                - order_code
+                - total
+    delete:
+      summary: 'Elimina un ordine.'
+      operationId: eliminaUnOrdine
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Order not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'Order not found'
+      tags:
+        - Orders
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the order.'
+        example: consequatur
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: order
+        description: 'ID dell’ordine.'
+        example: 1
+        required: true
+        schema:
+          type: integer
