@@ -7,6 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Services\OrderService;
 use App\Models\Customer;
+use App\Models\Order;
 
 class OrderList extends Component
 {
@@ -51,6 +52,13 @@ class OrderList extends Component
         // Dopo aver creato un ordine, torniamo a pagina 1
         $this->resetPage();
         $this->showCreateModal = false;
+    }
+    public function delete($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->delete();
+        // Messaggio di conferma
+        session()->flash('message', "Ordine #{$id} eliminato con successo.");
     }
 
     // Per ogni filtro, quando cambia, resetta la paginazione

@@ -51,6 +51,9 @@ class OrderCreateModal extends Component
 
     public function cancel()
     {
+     
+        $this->resetValidation();
+        $this->reset(['customer_id','order_date','order_code','status','products']);
         $this->show = false;
     }
 
@@ -89,6 +92,7 @@ class OrderCreateModal extends Component
                 $this->products[$idx]['price'] = 0;
             }
         }
+       
     }
 
     public function save(OrderService $orders)
@@ -110,9 +114,7 @@ class OrderCreateModal extends Component
 
         // totale = somma dei subtotali
         $data['total'] = array_sum(array_column($data['products'], 'price'));
-
-        $orders->create($data);
-
+        $order_id = $orders->create($data)->id;
         $this->dispatch('orderCreated');
         $this->show = false;
     }

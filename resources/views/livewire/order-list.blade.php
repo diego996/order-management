@@ -43,6 +43,11 @@
 
     {{-- Tabella ordini --}}
     <div wire:loading.class="opacity-50" wire:target="filterCustomer,filterStatus,filterDateFrom,filterDateTo">
+        @if (session()->has('message'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded mb-4">
+          {{ session('message') }}
+        </div>
+      @endif
         <table class="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
             <thead class="bg-blue-100 border-b">
                 <tr>
@@ -103,7 +108,16 @@
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-700">€ {{ number_format($o->total,2,',','.') }}</td>
                         <td class="px-6 py-4 text-sm">
-                            <a href="{{ route('orders.show', $o) }}" class="text-blue-600 hover:underline">Dettagli</a>
+                            <a href="{{ route('orders.show', $o) }}" 
+                               class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 focus:ring focus:ring-blue-300 focus:outline-none mr-2">
+                                Dettagli
+                            </a>
+                            <button
+                                wire:click="delete({{ $o->id }})"
+                                onclick="confirm('Sei sicuro di voler eliminare l\'ordine #{{ $o->id }}?') || event.stopImmediatePropagation()"
+                                class="bg-red-600 text-white px-4 py-2 rounded-lg shadow hover:bg-red-700 focus:ring focus:ring-red-300 focus:outline-none">
+                                Elimina
+                            </button>
                         </td>
                     </tr>
                 @empty
