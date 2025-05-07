@@ -5,7 +5,7 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'http://localhost'
+    url: 'https://order-management-master-er9oqj.laravel.cloud'
 tags:
   -
     name: Authentication
@@ -288,7 +288,7 @@ paths:
                 order_date:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2025-05-07T15:48:05'
+                  example: '2025-05-07T17:16:11'
                   nullable: false
                 order_code:
                   type: string
@@ -420,7 +420,7 @@ paths:
                 order_date:
                   type: string
                   description: 'Must be a valid date.'
-                  example: '2025-05-07T15:48:05'
+                  example: '2025-05-07T17:16:11'
                   nullable: false
                 order_code:
                   type: string

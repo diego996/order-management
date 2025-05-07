@@ -146,7 +146,7 @@ endpoints:
         name: order_date
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-07T15:48:05'
+        example: '2025-05-07T17:16:11'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -208,7 +208,7 @@ endpoints:
     cleanBodyParameters:
       user_id: consequatur
       customer_id: 1
-      order_date: '2025-05-07T15:48:05'
+      order_date: '2025-05-07T17:16:11'
       order_code: consequatur
       status: pending
       products:
@@ -399,7 +399,7 @@ endpoints:
         name: order_date
         description: 'Must be a valid date.'
         required: true
-        example: '2025-05-07T15:48:05'
+        example: '2025-05-07T17:16:11'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -479,7 +479,7 @@ endpoints:
     cleanBodyParameters:
       user_id: consequatur
       customer_id: 17
-      order_date: '2025-05-07T15:48:05'
+      order_date: '2025-05-07T17:16:11'
       order_code: consequatur
       status: consequatur
       total: 45

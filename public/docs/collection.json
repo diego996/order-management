@@ -5,12 +5,12 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "http:\/\/localhost"
+            "value": "https:\/\/order-management-master-er9oqj.laravel.cloud\/"
         }
     ],
     "info": {
         "name": "Laravel API Documentation",
-        "_postman_id": "2b762d68-bacf-4c77-98b5-a549a1a8be9e",
+        "_postman_id": "82437738-eb43-4181-aeb2-ab28f575afaf",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -221,7 +221,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"user_id\":\"consequatur\",\"customer_id\":1,\"order_date\":\"2025-05-07T15:48:05\",\"order_code\":\"consequatur\",\"status\":\"pending\",\"products\":[{\"id\":1,\"quantity\":2}]}"
+                            "raw": "{\"user_id\":\"consequatur\",\"customer_id\":1,\"order_date\":\"2025-05-07T17:16:11\",\"order_code\":\"consequatur\",\"status\":\"pending\",\"products\":[{\"id\":1,\"quantity\":2}]}"
                         },
                         "description": ""
                     },
@@ -328,7 +328,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"user_id\":\"consequatur\",\"customer_id\":17,\"order_date\":\"2025-05-07T15:48:05\",\"order_code\":\"consequatur\",\"status\":\"consequatur\",\"total\":45,\"products\":[\"consequatur\"]}"
+                            "raw": "{\"user_id\":\"consequatur\",\"customer_id\":17,\"order_date\":\"2025-05-07T17:16:11\",\"order_code\":\"consequatur\",\"status\":\"consequatur\",\"total\":45,\"products\":[\"consequatur\"]}"
                         },
                         "description": ""
                     },

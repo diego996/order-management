@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost";
+        var tryItOutBaseUrl = "https://order-management-master-er9oqj.laravel.cloud/";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -122,7 +122,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>https://order-management-master-er9oqj.laravel.cloud/</code>
 </aside>
 <pre><code>This documentation aims to provide all the information you need to work with our API.
 
@@ -151,7 +151,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/login" \
+    "https://order-management-master-er9oqj.laravel.cloud/api/login" \
     --header "Authorization: string required Credenziali in formato Basic Auth.  Example: Basic YWRtaW5AZXhhbXBsZS5jb206cGFzc3dvcmQ=  per testare con Postman admin@example.com:password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -159,7 +159,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/login"
+    "https://order-management-master-er9oqj.laravel.cloud/api/login"
 );
 
 const headers = {
@@ -309,7 +309,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/user" \
+    --get "https://order-management-master-er9oqj.laravel.cloud/api/user" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -317,7 +317,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user"
+    "https://order-management-master-er9oqj.laravel.cloud/api/user"
 );
 
 const headers = {
@@ -442,7 +442,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/logout" \
+    "https://order-management-master-er9oqj.laravel.cloud/api/logout" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -450,7 +450,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/logout"
+    "https://order-management-master-er9oqj.laravel.cloud/api/logout"
 );
 
 const headers = {
@@ -574,7 +574,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/orders?customer_id=1&amp;status=pending&amp;date_from=2023-10-01&amp;date_to=2023-10-31&amp;per_page=15" \
+    --get "https://order-management-master-er9oqj.laravel.cloud/api/orders?customer_id=1&amp;status=pending&amp;date_from=2023-10-01&amp;date_to=2023-10-31&amp;per_page=15" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -582,7 +582,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders"
+    "https://order-management-master-er9oqj.laravel.cloud/api/orders"
 );
 
 const params = {
@@ -772,14 +772,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/orders" \
+    "https://order-management-master-er9oqj.laravel.cloud/api/orders" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"user_id\": \"consequatur\",
     \"customer_id\": 1,
-    \"order_date\": \"2025-05-07T15:48:05\",
+    \"order_date\": \"2025-05-07T17:16:11\",
     \"order_code\": \"consequatur\",
     \"status\": \"pending\",
     \"products\": [
@@ -794,7 +794,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders"
+    "https://order-management-master-er9oqj.laravel.cloud/api/orders"
 );
 
 const headers = {
@@ -806,7 +806,7 @@ const headers = {
 let body = {
     "user_id": "consequatur",
     "customer_id": 1,
-    "order_date": "2025-05-07T15:48:05",
+    "order_date": "2025-05-07T17:16:11",
     "order_code": "consequatur",
     "status": "pending",
     "products": [
@@ -962,10 +962,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="order_date"                data-endpoint="POSTapi-orders"
-               value="2025-05-07T15:48:05"
+               value="2025-05-07T17:16:11"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-07T15:48:05</code></p>
+<p>Must be a valid date. Example: <code>2025-05-07T17:16:11</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>order_code</code></b>&nbsp;&nbsp;
@@ -1038,7 +1038,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/orders/consequatur" \
+    --get "https://order-management-master-er9oqj.laravel.cloud/api/orders/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1046,7 +1046,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/consequatur"
+    "https://order-management-master-er9oqj.laravel.cloud/api/orders/consequatur"
 );
 
 const headers = {
@@ -1205,14 +1205,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/orders/consequatur" \
+    "https://order-management-master-er9oqj.laravel.cloud/api/orders/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"user_id\": \"consequatur\",
     \"customer_id\": 17,
-    \"order_date\": \"2025-05-07T15:48:05\",
+    \"order_date\": \"2025-05-07T17:16:11\",
     \"order_code\": \"consequatur\",
     \"status\": \"consequatur\",
     \"total\": 45,
@@ -1225,7 +1225,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/consequatur"
+    "https://order-management-master-er9oqj.laravel.cloud/api/orders/consequatur"
 );
 
 const headers = {
@@ -1237,7 +1237,7 @@ const headers = {
 let body = {
     "user_id": "consequatur",
     "customer_id": 17,
-    "order_date": "2025-05-07T15:48:05",
+    "order_date": "2025-05-07T17:16:11",
     "order_code": "consequatur",
     "status": "consequatur",
     "total": 45,
@@ -1415,10 +1415,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="order_date"                data-endpoint="PUTapi-orders--id-"
-               value="2025-05-07T15:48:05"
+               value="2025-05-07T17:16:11"
                data-component="body">
     <br>
-<p>Must be a valid date. Example: <code>2025-05-07T15:48:05</code></p>
+<p>Must be a valid date. Example: <code>2025-05-07T17:16:11</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>order_code</code></b>&nbsp;&nbsp;
@@ -1513,7 +1513,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/orders/consequatur" \
+    "https://order-management-master-er9oqj.laravel.cloud/api/orders/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1521,7 +1521,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/orders/consequatur"
+    "https://order-management-master-er9oqj.laravel.cloud/api/orders/consequatur"
 );
 
 const headers = {
