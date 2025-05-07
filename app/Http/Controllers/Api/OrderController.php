@@ -14,56 +14,20 @@ class OrderController extends Controller
     public function __construct(protected OrderService $service) {}
 
 
-    //Laravel Scribe COMMENTA 
-    // @group Orders
-    // @authenticated
-    // @response 200 {
-    //     "data": [
-    //         {
-    //             "id": 1,
-    //             "customer_id": 1,
-    //             "status": "pending",
-    //             "total": 100.00,
-    //             "created_at": "2023-10-01T12:00:00Z",
-    //             "updated_at": "2023-10-01T12:00:00Z",
-    //             "products": [
-    //                 {
-    //                     "id": 1,
-    //                     "name": "Product 1",
-    //                     "price": 50.00,
-    //                     "quantity": 2
-    //                 },
-    //                 {
-    //                     "id": 2,
-    //                     "name": "Product 2",
-    //                     "price": 25.00,
-    //                     "quantity": 1
-    //                 }
-    //             ]
-    //         }
-    //     ]
-    // }
-    // @response 404 {
-    //     "message": "Order not found"
-    // }
-    // @response 422 {
-    //     "message": "The given data was invalid.",
-    //     "errors": {
-    //         "customer_id": [
-    //             "The customer id field is required."
-    //         ],
-    //         "status": [
-    //             "The status field is required."
-    //         ],
-    //         "products": [
-    //             "The products field is required."
-    //         ]
-    //     }
-    // }
-    // }
-    // @response 401 {
-    //     "message": "Unauthenticated."
-    // }
+   /**
+     * Lista gli ordini con filtri.
+     *
+     * @queryParam customer_id integer Filtra per ID cliente. Example: 1
+     * @queryParam status string Filtra per stato (pending, completed). Example: pending
+     * @queryParam date_from date Filtra data inizio. Example: 2023-10-01
+     * @queryParam date_to date Filtra data fine. Example: 2023-10-31
+     * @queryParam per_page integer Numero di risultati per pagina. Example: 15
+     *
+     * @response 200 {
+     *   "data": [array di ordini ],
+    *   "meta": {  paginazione  }
+    * }
+    */
 
 
     public function index(Request $request): JsonResponse
@@ -75,7 +39,21 @@ class OrderController extends Controller
 
         return response()->json($orders);
     }
-
+ /**
+     * Mostra i dettagli di un singolo ordine.
+     *
+     * @urlParam order integer required ID dell’ordine. Example: 1
+     * @response 200 {
+     *   "id": 1,
+     *   "customer_id": 1,
+     *   "status": "pending",
+     *   "total": 100.00,
+     *   "products": []
+     * }
+     * @response 404 {
+     *   "message": "Order not found"
+     * }
+     */
     public function show(int $order): JsonResponse
     {
         $model = $this->service->get($order);
@@ -90,6 +68,21 @@ class OrderController extends Controller
 
         return response()->json($model);
     }
+/**
+     * Crea un nuovo ordine.
+     *
+     * @bodyParam customer_id integer required ID cliente. Example: 1
+     * @bodyParam status string required Stato ordine. Example: pending
+     * @bodyParam products array required Elenco prodotti con id e quantità. Example: [{"id":1,"quantity":2}]
+     *
+     * @response 201 {
+     *      restituzione ordine creato
+     * }
+     * @response 422 {
+     *   "message": "The given data was invalid.",
+     *   "errors": {}
+     * }
+     */
 
     public function store(StoreOrderRequest $request): JsonResponse
     {
@@ -98,6 +91,18 @@ class OrderController extends Controller
 
         return response()->json($order, 201);
     }
+     /**
+     * Aggiorna un ordine esistente.
+     *
+     * @urlParam order integer required ID dell’ordine. Example: 1
+     * @bodyParam customer_id integer ID cliente.
+     * @bodyParam status string Stato.
+     * @bodyParam products array Elenco prodotti.
+     *
+     * @response 200 {  restituzione ordine aggiornato  }
+     * @response 404 { "message": "Order not found" }
+     * @response 422 {  errore di validazione  }
+     */
 
     public function update(UpdateOrderRequest $request, int $order): JsonResponse
     {
@@ -105,7 +110,13 @@ class OrderController extends Controller
         $updated = $this->service->update($order, $data);
         return response()->json($updated);
     }
-
+    /**
+     * Elimina un ordine.
+     *
+     * @urlParam order integer required ID dell’ordine. Example: 1
+     * @response 204 - No Content
+     * @response 404 { "message": "Order not found" }
+     */
     public function destroy(int $order): JsonResponse
     {
         $deleted = $this->service->delete($order);
