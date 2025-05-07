@@ -46,7 +46,6 @@ class OrderController extends Controller
     {
         $data = $request->validated();
         $updated = $this->service->update($order, $data);
-
         return response()->json($updated);
     }
 
@@ -60,4 +59,6 @@ class OrderController extends Controller
 
         return response()->json(null, 204);
     }
+
+
 }

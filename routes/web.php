@@ -1,15 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\OrderList;
-use App\Livewire\OrderDetails;
+
+use App\Models\Order;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/orders', function () {
+Route::get('/', function () {
     return view('orders.index');
 })->name('orders.index');
-Route::get('/orders/{order}', OrderDetails::class)->name('orders.show');
+
+Route::get('/orders/{order}', function (Order $order) {
+    return view('orders.show', ['order' => $order]);
+})->name('orders.show');

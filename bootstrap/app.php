@@ -9,6 +9,7 @@ use Illuminate\Validation\ValidationException;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Http\Middleware\ForceJsonResponse;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -18,11 +19,17 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+
+        //spiegamele
+        // 1. ForceJsonResponse: Forza la risposta in JSON per tutte le richieste API
+        // 2. EnsureFrontendRequestsAreStateful: Assicura che le richieste API siano stateful per il frontend
+        // 3. throttle:api: Limita il numero di richieste API per evitare abusi
+        // 4. auth:sanctum: Autenticazione tramite Sanctum per le richieste API
         $middleware->api(prepend: [
+            ForceJsonResponse::class,
             EnsureFrontendRequestsAreStateful::class,
         ]);
 
-        // Se vuoi, puoi anche appendere throttle e auth:sanctum:
         $middleware->api(append: [
             'throttle:api',
             'auth:sanctum',
